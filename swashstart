@@ -28,10 +28,12 @@
 username="$USER"
 user="$(id -u)"
 home="${1:-$HOME}"
-#mnt="${home}/swash_data"
-mnt="./swash_data"
+mnt="${home}/swash_data"
 imageName="ikarmpadakis/swash:latest"
 containerName="swash"
+
+# Copy over example to run
+cp -r ./Example $mnt/
 
 # Create docker container called swash. The container will be removed upon exit
 echo "Creating container: ${containerName}"

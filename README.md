@@ -1,5 +1,5 @@
 # SWASH using Docker
-Docker installation of SWASH. The package is running  `Ubuntu 18.04` under the hood.
+Docker installation of SWASH. The package is running  `Ubuntu 18.04` under the hood. The exetutable can be used in all operating systems without any further modifications.
 
 The **SWASH** model is available in: http://swash.sourceforge.net.
 This code is merely intended to help with the installation of the
@@ -24,11 +24,14 @@ A `$data` environmental variable has been added for easier navigation.
 ```
 ./swashstart
 ```
+The `swashstart` command starts a new terminal inside the ubuntu container where swash is installed. Now swash can be run as if it was installed locally on the PC. 
 One of the example files from the SWASH team (see references above) is copied over in the data folder.
 ```
-cd $data/Example/a11stwav/
+cd Example/a11stwav/
 swashrun -input a11stw01
 ```
 In this respect `swashrun` works in the wame way as in a linux system (see SWASH Manual)
+
+While the swash image will run on all platforms the swashstart bash script might not (has not been written with WIndows in mind, because SWASH already has an installer. Adjusting the folder creation to be Windows compatible will come soon.
 
 *Tested on MacOS and Ubuntu*

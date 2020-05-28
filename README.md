@@ -20,7 +20,6 @@ git clone https://github.com/ikarmpadakis/swash.git ./swash
 cd swash
 ```
 Initialise **SWASH**. This creates a new data folder in `~/swash_data`. This folder mounted in the container and will contain all the simulated data. The location of the fodler can be modified by changing the `mnt` variable. The container is destroyed after exiting so it does not leave any traces in the local system. 
-A `$data` environmental variable has been added for easier navigation.
 ```
 ./swashstart
 ```

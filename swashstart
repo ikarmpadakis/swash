@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# This file is starts SWASH in a Docker container
+#
+# Description
+#     This script initiates a docker container for SWASH
+#     1) A static structure is implemented inside the container where:
+#       /home/swash is the user's parent folder
+#       /home/swash/source contains the source code and executables
+#       /home/swash/data is intended for the swash simulations
+#     2) A swash_data folder is generated in the local PC and is mounted to
+#        the data folder in the container for online access to data. The
+#        location of the mount point can be changed by changing the mnt
+#        variable here
+#
+# The SWASH model is available in: http://swash.sourceforge.net
+# This code is merely intended to ease in the installation of the
+# package through Docker. The methods, physics and description of the model
+# should be sought in the link about and references therein.
+#
+# Download and install Docker before runnning this script:
+# https://docs.docker.com/get-docker/
+
+
+# IK2020
+#------------------------------------------------------------------------------
+
+username="$USER"
+user="$(id -u)"
+home="${1:-$HOME}"
+#mnt="${home}/swash_data"
+mnt="./swash_data"
+imageName="ikarmpadakis/swash:latest"
+containerName="swash"
+
+# Create docker container called swash. The container will be removed upon exit
+echo "Creating container: ${containerName}"
+docker run  -it \
+    -d \
+    --rm \
+    --name ${containerName}  \
+    --workdir="/home/swash/data" \
+    -v="${mnt}":/home/swash/data \
+    ${imageName} /bin/bash
+
+# Start container
+echo "SWASH ready!"
+echo " "
+echo "Navigate to folder and run case"
+echo "********************************************"
+echo "Syntax: swashrun -input <filename_without_extension>"
+echo "********************************************"
+docker attach ${containerName}

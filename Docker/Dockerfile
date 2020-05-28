@@ -27,11 +27,10 @@ RUN cd ./source/swash;\
     make config;\
     make ser;\
     chmod +rx swashrun;\
-    mkdir -p ~/data
+    mkdir -p home/swash/data
 
 # Create some Environmental variables
 ENV PATH="/home/swash/source/swash:${PATH}"
-ENV data="~/data"
 
 # set the default container user to swash
 USER swash
